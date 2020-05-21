@@ -22,7 +22,7 @@ class CreateProductService {
     // TODO
     const findProduct = this.productsRepository.findByName(name);
 
-    if (findProduct) {
+    if (!findProduct) {
       throw new AppError('Product already exist');
     }
 
