@@ -13,10 +13,12 @@ class OrdersRepository implements IOrdersRepository {
 
   public async create({ customer, products }: ICreateOrderDTO): Promise<Order> {
     // TODO
-    const order = this.ormRepository.save({
+    const order = this.ormRepository.create({
       customer,
-      products,
+      order_products: products,
     });
+
+    await this.ormRepository.save(order);
 
     return order;
   }

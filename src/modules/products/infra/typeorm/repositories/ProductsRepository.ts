@@ -28,6 +28,8 @@ class ProductsRepository implements IProductsRepository {
       quantity,
     });
 
+    await this.ormRepository.save(product);
+
     return product;
   }
 

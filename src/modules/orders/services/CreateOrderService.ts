@@ -46,6 +46,10 @@ class CreateProductService {
       productsId,
     );
 
+    if (findAllProducts.length !== products.length) {
+      throw new AppError('There is an invalid item on the request');
+    }
+
     const finalProducts = findAllProducts.map(finalProduct => {
       const productFinal = products.find(
         productFind => productFind.id === finalProduct.id,
@@ -57,7 +61,7 @@ class CreateProductService {
       };
     });
 
-    const order = this.ordersRepository.create({
+    const order = await this.ordersRepository.create({
       customer,
       products: finalProducts,
     });

@@ -14,21 +14,18 @@ export default class CreateProducts1589924825309 implements MigrationInterface {
             default: 'uuid_generate_v4()',
           },
           {
-            name: 'order_products_id',
-            type: 'uuid',
-            isNullable: true,
-          },
-          {
             name: 'name',
             type: 'varchar',
           },
           {
             name: 'price',
-            type: 'decimal',
+            type: 'numeric',
+            precision: 10,
+            scale: 2,
           },
           {
             name: 'quantity',
-            type: 'int',
+            type: 'integer',
           },
           {
             name: 'created_at',
